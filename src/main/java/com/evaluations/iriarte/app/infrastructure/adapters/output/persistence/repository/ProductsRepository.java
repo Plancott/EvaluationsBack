@@ -2,8 +2,9 @@ package com.evaluations.iriarte.app.infrastructure.adapters.output.persistence.r
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.evaluations.iriarte.app.domain.model.Products;
 
-public interface ProductsRepository  extends JpaRepository<Products, Long> {
+import com.evaluations.iriarte.app.infrastructure.adapters.output.persistence.entity.ProductsEntity;
+
+public interface ProductsRepository  extends JpaRepository<ProductsEntity, Long> {
 
 }

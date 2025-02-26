@@ -2,8 +2,8 @@ package com.evaluations.iriarte.app.infrastructure.adapters.output.persistence.r
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.evaluations.iriarte.app.domain.model.Category;
+import com.evaluations.iriarte.app.infrastructure.adapters.output.persistence.entity.CategoryEntity;
 
-public interface CategoryRepository extends JpaRepository<Category, Long> {
+public interface CategoryRepository extends JpaRepository<CategoryEntity, Long> {
 
 }
