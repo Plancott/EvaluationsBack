@@ -1,4 +1,4 @@
-package com.evaluations.iriarte.app.domain.model;
+package com.evaluations.iriarte.app.infrastructure.adapters.input.rest.model.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,12 +6,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Category {
+@Builder
+public class CategoryResponse {
     private Long id;
     private String name;
 }
