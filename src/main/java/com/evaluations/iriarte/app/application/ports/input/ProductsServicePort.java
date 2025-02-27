@@ -10,5 +10,6 @@ public interface ProductsServicePort {
     Products save(Products products);
     Products update(Long id, Products products);
     void deleteById(Long id);
-
+    List<Products> searchProductsByName(String name);
+    List<Products> getProductsByCategory(Long categoryId);
 }

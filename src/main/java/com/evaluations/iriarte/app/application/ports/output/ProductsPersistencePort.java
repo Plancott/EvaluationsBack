@@ -10,4 +10,6 @@ public interface ProductsPersistencePort {
     List<Products> findAll();
     Products save(Products products);
     void deleteById(Long id);
+    List<Products> findByName(String name);
+    List<Products> findByCategory(Long categoryId);
 }

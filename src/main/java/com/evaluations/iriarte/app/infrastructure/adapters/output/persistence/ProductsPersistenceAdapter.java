@@ -2,7 +2,6 @@ package com.evaluations.iriarte.app.infrastructure.adapters.output.persistence;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.stereotype.Component;
 
 import com.evaluations.iriarte.app.application.ports.output.ProductsPersistencePort;
@@ -39,6 +38,12 @@ public class ProductsPersistenceAdapter implements ProductsPersistencePort {
     public void deleteById(Long id) {
         productsRepository.deleteById(id);
     }
-    
+    public List<Products> findByName(String name) {
+        return productsPersistanceMapper.toProductsList(productsRepository.findByNameContainingIgnoreCase(name));
+    }
+
+    public List<Products> findByCategory(Long categoryId) {
+        return productsPersistanceMapper.toProductsList(productsRepository.findByCategory_Id(categoryId));
+    }
 
 }

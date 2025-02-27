@@ -19,12 +19,12 @@ public class ProductsCreateRequest {
     private String name;
 
     @NotNull(message = "Price is required")
-    private Integer price;
+    private Double price;
 
     @NotNull(message = "Stock is required")
     private Integer stock;
     
     @NotNull(message = "Category is required")
-    private Long categoryId;
+    private CategoryRequestId category;
 
 }
