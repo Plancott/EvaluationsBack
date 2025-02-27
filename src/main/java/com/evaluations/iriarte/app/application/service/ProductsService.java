@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import com.evaluations.iriarte.app.application.ports.input.ProductsServicePort;
 import com.evaluations.iriarte.app.application.ports.output.ProductsPersistencePort;
-import com.evaluations.iriarte.app.domain.exception.ProductsNotFoundException;
 import com.evaluations.iriarte.app.domain.model.Products;
 
 import lombok.RequiredArgsConstructor;
@@ -19,7 +18,7 @@ public class ProductsService implements ProductsServicePort {
 
     @Override
     public Products findById(Long id) {
-        return productsPersistencePort.findById(id).orElseThrow(ProductsNotFoundException::new);
+        return productsPersistencePort.findById(id).orElseThrow();
     }
 
     @Override
@@ -39,14 +38,15 @@ public class ProductsService implements ProductsServicePort {
                 .map(productsFound -> {
                     products.setId(productsFound.getId());
                     return productsPersistencePort.save(products);
-                }).orElseThrow(ProductsNotFoundException::new);
+                }).orElseThrow();
     }
 
     @Override
     public void deleteById(Long id) {
         if (productsPersistencePort.findById(id).isEmpty()) {
-            throw new ProductsNotFoundException();
-        }productsPersistencePort.deleteById(id);
+            throw new RuntimeException("Product not found");
+        }
+        productsPersistencePort.deleteById(id);
     }
 
 }

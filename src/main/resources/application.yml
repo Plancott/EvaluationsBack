@@ -1,0 +1,24 @@
+spring:
+    application:
+        name: product-service
+    jackson:
+        default-property-inclusion: NON_NULL
+        property-naming-strategy: SNAKE_CASE
+    datasource:
+        url: jdbc:postgresql://localhost:5432/product_db
+        username: postgres
+        password: root
+        driver-class-name: org.postgresql.Driver
+    jpa:
+        show-sql: true
+        hibernate:
+            ddl-auto: create
+logging:
+    level:
+        org:
+            hibernate:
+                SQL: debug
+        
+
+
+

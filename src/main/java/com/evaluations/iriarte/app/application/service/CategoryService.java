@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import com.evaluations.iriarte.app.application.ports.input.CategoryServicePort;
 import com.evaluations.iriarte.app.application.ports.output.CategoryPersistencePort;
-import com.evaluations.iriarte.app.domain.exception.CategoryNotFoundException;
 import com.evaluations.iriarte.app.domain.model.Category;
 
 import lombok.RequiredArgsConstructor;
@@ -18,7 +17,7 @@ public class CategoryService implements CategoryServicePort {
 
     @Override
     public Category findById(Long id) {
-        return categoryPersistencePort.findById(id).orElseThrow(CategoryNotFoundException::new);
+        return categoryPersistencePort.findById(id).orElseThrow();
     }
 
     public List<Category> findAll() {
@@ -34,12 +33,12 @@ public class CategoryService implements CategoryServicePort {
                 .map(categoryFound -> {
                     category.setId(categoryFound.getId());
                     return categoryPersistencePort.save(category);
-                }).orElseThrow(CategoryNotFoundException::new);
+                }).orElseThrow();
     }
     
     public void deleteById(Long id) {
         if (categoryPersistencePort.findById(id).isEmpty()) {
-            throw new CategoryNotFoundException();
+            throw new RuntimeException("Category not found");
         }categoryPersistencePort.deleteById(id);
     }
 

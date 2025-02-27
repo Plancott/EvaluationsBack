@@ -14,12 +14,16 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductsCreateRequest {
+
     @NotBlank(message = "Name is required")
     private String name;
+
     @NotNull(message = "Price is required")
     private Integer price;
+
     @NotNull(message = "Stock is required")
     private Integer stock;
+    
     @NotNull(message = "Category is required")
     private Long categoryId;
 
